@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gray-950 text-gray-100 antialiased;
+    font-family: 'Inter', system-ui, ui-sans-serif, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a, button {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  /* Custom Scrollbar for Modern Dashboard Look */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-red-900/50 rounded-full border-2 border-gray-900 transition-colors hover:bg-red-800;
+  }
+
+  /* Removing the default blue highlight in mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Hide browser-native password reveal / clear buttons (Edge, IE, Chrome) */
+  input[type="password"]::-ms-reveal,
+  input[type="password"]::-ms-clear {
+    display: none !important;
+  }
+
+  input[type="password"]::-webkit-credentials-auto-fill-button,
+  input[type="password"]::-webkit-password-reveal-button {
+    display: none !important;
+    pointer-events: none;
+  }
+}
+
+/* Helper Class for Glassmorphism Effect */
+.glass-effect {
+  @apply backdrop-blur-md bg-white/5 border border-white/10;
+}
+
+/* Gold Metallic Text */
+.gold-text {
+  background: linear-gradient(135deg, #ca8a04 0%, #fef3c7 45%, #eab308 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass Card (dual border: gold top + maroon bottom) */
+.glass-card {
+  background: rgba(10, 10, 15, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(234, 179, 8, 0.30);
+  border-left: 1px solid rgba(234, 179, 8, 0.08);
+  border-right: 1px solid rgba(128, 0, 0, 0.10);
+  border-bottom: 2px solid rgba(128, 0, 0, 0.38);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.55),
+    0 2px 0 rgba(234, 179, 8, 0.10) inset,
+    0 0 0 1px rgba(234, 179, 8, 0.06);
+}
+
+.glass-card:hover {
+  border-top-color: rgba(234, 179, 8, 0.45);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(128, 0, 0, 0.18),
+    0 2px 0 rgba(234, 179, 8, 0.15) inset;
+}
+
+/* Glass Panel (sidebar / navbar) */
+.glass-panel {
+  background: rgba(8, 8, 12, 0.90);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(234, 179, 8, 0.10);
+}
+
+/* Animation for page transitions */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* ── Dropdown layering ──────────────────────────────────────────────────────
+   Flowbite renders the dropdown popup as a sibling div. The className prop
+   on <Dropdown> targets the popup panel directly. We back it up here via the
+   Flowbite data attribute so it always floats above glass-card stacking
+   contexts on every page. Grain overlay (body::before) sits at z-9998;
+   the dropdown must be at z-9999 to clear it.
+   -------------------------------------------------------------------------- */
+[data-testid="flowbite-dropdown"] {
+  z-index: 9999 !important;
+}
+
+/* Utility: any element that needs to break out of backdrop-filter contexts */
+.dropdown-overlay {
+  z-index: 9999 !important;
+  position: relative;
+}
+
+/* Grain texture — subtle paper/canvas depth on the dark background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.028;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 300px 300px;
+}

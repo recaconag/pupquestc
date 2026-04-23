@@ -1,0 +1,55 @@
+{
+  "name": "pupquestc-backend",
+  "version": "1.0.0",
+  "description": "Backend API for PUPQuestC Lost and Found Management System",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "start": "node dist/server.js",
+    "build": "prisma generate && tsc",
+    "postinstall": "prisma generate",
+    "migrate": "npx prisma migrate dev",
+    "studio": "npx prisma studio",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lost-and-found",
+    "pupqc",
+    "adet",
+    "nodejs",
+    "prisma"
+  ],
+  "author": "Reca Maelah Conag <recamaelahmconag@iskolarngbayan.pup.edu.ph>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.8",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.8",
+    "prisma": "^5.22.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@prisma/client": "^5.22.0",
+    "@prisma/extension-accelerate": "^2.0.1",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/multer": "^2.1.0",
+    "@types/node-cron": "^3.0.11",
+    "@types/nodemailer": "^8.0.0",
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.1.1",
+    "node-cron": "^4.2.1",
+    "nodemailer": "^8.0.5",
+    "ts-node-dev": "^2.0.0",
+    "zod": "^3.23.8"
+  }
+}
