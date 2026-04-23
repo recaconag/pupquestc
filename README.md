@@ -163,8 +163,6 @@ npm run dev
 
 Go to **[http://localhost:5173](http://localhost:5173)** in your browser.
 
-> **Defense Tip:** Keep the server terminal open during the demo — it shows live logs of every API call. Great for explaining the request-response flow to your panel.
-
 ---
 
 ## User Roles
@@ -201,12 +199,6 @@ All routes that modify data require a valid **JWT token** in the `Authorization`
 - Optional **Two-Factor Authentication (2FA)** via email OTP
 - Input is validated on both frontend (Zod) and backend (Zod) before any database write
 - **Soft delete** — no data is permanently removed; deleted records are just flagged
-
----
-
-## Additional Documentation
-
-- **[DEVELOPMENT_UI_GUIDE.md](./DEVELOPMENT_UI_GUIDE.md)** — Color palette, component library, form patterns, animation standards, and code hygiene rules for the frontend.
 
 ---
 
